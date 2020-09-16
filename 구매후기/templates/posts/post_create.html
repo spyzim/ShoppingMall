@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    
     <title>리뷰 작성</title>
 </head>
 <body>
@@ -11,6 +14,16 @@
     <form action="" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form.as_p }}
+
+        <!-- <label for="stars">Rating:</label>
+        <select name="stars">
+            <option value="five">★★★★★</option>
+            <option value="four">★★★★☆</option>
+            <option value="three">★★★☆☆</option>
+            <option value="two">★★☆☆☆</option>
+            <option value="one">★☆☆☆☆</option>
+        </select> -->
+        <br><br>
         <input type="submit" value="리뷰 작성하기">
     </form>
    
