@@ -7,31 +7,55 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>게시판</title>
 </head>
 
-<body style = "position: relative; left: 7%; width:86%"> 
+<body style = "position: relative; left: 7%; width: 86%"> 
   
   <br>
   <div class="navbar">
-        
+        <span style = "font-size: 40px; color: white;">상품평</span>
+  </div>
+  <div>
+        <a style = "position: relative; left: 980px" href="{% url 'posts:post_create' %}"><button type="button" class="button button2">후기 작성하러 가기</button></a>
   </div>
   <br>
 
     {% for post in posts %}
       
       {% if post.rating == "★★★★★" %}
-        <p class="star">★★★★★</p>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
       {% elif post.rating == "★★★★☆" %}
-        <p class="star">★★★★☆</p>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
       {% elif post.rating == "★★★☆☆" %}
-        <p class="star">★★★☆☆</p>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
       {% elif post.rating == "★★☆☆☆" %}
-        <p class="star">★★☆☆☆</p>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
       {% elif post.rating == "★☆☆☆☆" %}
-        <p class="star">★☆☆☆☆</p>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
       {% else %}
         <p>데이터를 제대로 받지 못함</p>
       {% endif %}
@@ -40,16 +64,19 @@
       {% if post.photo %}
         <a href="{% url 'posts:photo_show' post.pk %}"><img src="{{ post.photo_thumbnail.url }}" alt=""></a><br>
       {% endif %}
+      <br>
       {{ post.content }}<br>
-      <a href="{% url 'posts:post_update' post.pk %}"><button type="button" class="btn btn-primary btn-sm">수정</button></a>
-      <a href="{% url 'posts:post_delete' post.pk %}"><button type="button" class="btn btn-primary btn-sm">삭제</button></a>
+      <br>
+      <a style = "position: relative; left: 1000px" href="{% url 'posts:post_update' post.pk %}"><button type="button" class="button button2">수정</button></a>
+      <a style = "position: relative; left: 1000px" href="{% url 'posts:cushion_delete' post.pk %}"><button type="button" class="button button2">삭제</button></a>
       <hr>
     {% endfor %}
 
-
+    
 </body>
 </html>
 <style>
+  /* navbar */
     body {font-family: Arial, Helvetica, sans-serif;}
     
     .navbar {
@@ -84,4 +111,23 @@
     p.star {
       font-size: 20px
     }
+
+/* 수정, 삭제 버튼 */
+    .button {
+      background-color: white;
+      border: none;
+      color: black;
+      padding: 7px 11px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 3px 2px;
+      cursor: pointer;
+    }
+
+/* 별 모양 */
+  .checked {
+    color: orange;
+  }
     </style>

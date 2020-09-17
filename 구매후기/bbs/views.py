@@ -6,7 +6,7 @@ from .forms import PostForm
 
 # 게시판 화면
 def posts(request):
-    posts = Review.objects.all()
+    posts = Review.objects.all().order_by("-id")
     
     context = { 'posts' : posts }
     return render(request, 'posts/posts.html', context)
@@ -36,13 +36,13 @@ def post_update(request, pk):
     post = get_object_or_404(Review, pk=pk)
 
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
             return redirect('posts:posts')
     
     form = PostForm(instance=post)
-    context = {'form' : form}
+    context = {'form' : form, 'post' : post }
     return render(request, 'posts/post_update.html', context)
 
 # 리뷰 삭제 (Delete)
@@ -57,3 +57,8 @@ def photo_show(request, pk):
 
     context = { 'post' : post }
     return render(request, 'posts/photo_show.html', context)
+
+def cushion_delete(request, pk):
+    post = get_object_or_404(Review, pk=pk)
+    context = { 'post' : post }
+    return render(request, 'posts/cushion_delete.html', context)

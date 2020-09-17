@@ -3,17 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <title>리뷰글 수정</title>
 </head>
-<body>
+<body style = "position: relative; left: 7%; width:86%">
+    <br>
+    <div class="navbar">
+          <span style = "font-size: 40px; color: white;">후기 작성</span>
+    </div>
+    <br>
 
+    {% if post.photo %}
+        <img src="{{ post.photo.url }}" alt=""><br>
+    {% endif%}
     <form action="" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="수정하기">
+        content<br>
+        {{ form.content }}<br><br>
+        평점: 
+        {{ form.rating }}<hr><br>
+        <input type="submit" class="button button2" value="수정">
     </form>
 
 </body>
 </html>
+<style>
+  /* navbar */
+    body {font-family: Arial, Helvetica, sans-serif;}
+    
+    .navbar {
+      width: 100%;
+      background-color: #555;
+      overflow: auto;
+    }
+    
+    .navbar a {
+      float: left;
+      padding: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .navbar a:hover {
+      background-color: #000;
+    }
+    
+    .active {
+      background-color: #4CAF50;
+    }
+    
+    @media screen and (max-width: 500px) {
+      .navbar a {
+        float: none;
+        display: block;
+      }
+    }
+  /* 수정, 삭제 버튼 */
+  .button {
+      background-color: black;
+      border: none;
+      color: white;
+      padding: 15px 35px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 10px 10px;
+      cursor: pointer;
+      position: relative;
+      left: 85%;
+    }
+</style>

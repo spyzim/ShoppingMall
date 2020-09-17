@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>원본 사진</title>
+    <title>Cushion</title>
 </head>
 <body style = "position: relative; left: 7%; width:86%">
-    
-    <img src="{{ post.photo.url }}" alt=""><br>
-
+    정말로 삭제하시겠습니까?<br>
+    <a href="{% url 'posts:post_delete' post.pk %}">예</a>
+    <a href="{% url 'posts:posts' %}">아니오</a>
 </body>
 </html>
